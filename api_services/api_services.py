@@ -2,7 +2,6 @@ import requests
 
 def get_user_data():
     url = "https://reqres.in/api/users"
-    # payload = {}
     headers = {
       'x-api-key': 'reqres-free-v1'
     }

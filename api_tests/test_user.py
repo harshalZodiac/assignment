@@ -1,10 +1,9 @@
-import json
-
-import pytest
-
 from api_services.api_common import validate_response
-from api_services.api_services import *
 from utilities.json_utilities import get_payload_json
+from api_services.api_services import *
+import settings
+import pytest
+import json
 
 
 class TestReqresUsers:
@@ -16,7 +15,7 @@ class TestReqresUsers:
 
     @pytest.fixture(scope="class")
     def user_creation_request(self):
-        payload = get_payload_json("D:\\PythonProject\\Finacplus\\api_tests\\templates\\create_new_user.json")
+        payload = get_payload_json(settings.user_creation_payload)
         response = create_new_user(json.dumps(payload))
 
         return response
@@ -28,7 +27,7 @@ class TestReqresUsers:
     def test_update_user_data(self, user_creation_request):
         creation_response = user_creation_request
         user_id = creation_response.json()["id"]
-        payload = get_payload_json("D:\\PythonProject\\Finacplus\\api_tests\\templates\\create_new_user.json")
+        payload = get_payload_json(settings.user_creation_payload)
         payload["name"] = 'Shinde'
         response = update_user_data(payload, user_id)
         validate_response(response, 200)

@@ -54,3 +54,7 @@ class DemoQAPage:
             file.write(f"Title: {settings.BOOK_NAME}\n")
             file.write(f"Author: {author}\n")
             file.write(f"Publisher: {publisher}\n")
+
+    def user_log_out(self):
+        self.page.locator(self.log_out_button).wait_for(state="visible")
+        self.page.locator(self.log_out_button).click()

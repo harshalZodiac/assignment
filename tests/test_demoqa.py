@@ -21,3 +21,4 @@ class TestDemoQA:
 
         demo_qa_pages.log_out_button_availability()
         demo_qa_pages.search_specific_book()
+        demo_qa_pages.user_log_out()
